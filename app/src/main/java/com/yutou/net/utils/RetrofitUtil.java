@@ -3,7 +3,7 @@ package com.yutou.net.utils;
 import android.util.Log;
 
 import com.yutou.BuildConfig;
-import com.yutou.MyApplication;
+import com.yutou.SampleApplication;
 import com.yutou.data.APPURL;
 import com.yutou.net.ApiService;
 import com.yutou.net.BaseSubscriber;
@@ -77,7 +77,7 @@ public class RetrofitUtil {
      * @return
      */
     private OkHttpClient getOkHttpClient() {
-        File cacheFile = new File(MyApplication.getInstance().getCacheDir(), "MyProjectCache");
+        File cacheFile = new File(SampleApplication.getInstance().getCacheDir(), "MyProjectCache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (BuildConfig.DEBUG) {
@@ -108,14 +108,14 @@ public class RetrofitUtil {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                if (!HttpUtils.checkNetworkState(MyApplication.getInstance())) {
+                if (!HttpUtils.checkNetworkState(SampleApplication.getInstance())) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
                             .build();
                 }
                 Response response = chain.proceed(request);
                 Log.e("123", response.toString() + "123");
-                if (HttpUtils.checkNetworkState(MyApplication.getInstance())) {
+                if (HttpUtils.checkNetworkState(SampleApplication.getInstance())) {
                     int maxAge = 0;
                     // 有网络时 设置缓存超时时间0个小时
                     response.newBuilder()

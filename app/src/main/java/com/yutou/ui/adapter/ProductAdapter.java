@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yutou.R;
@@ -19,10 +20,12 @@ import java.util.List;
  * 修 改 人：
  */
 public class ProductAdapter extends BaseQuickAdapter<ProductBean.ListBean.ProductListBean> {
+    private Context mContext;
 
 
     public ProductAdapter(Context context, List<ProductBean.ListBean.ProductListBean> mDatas) {
         super(R.layout.recyclerview_product_item, mDatas);
+        mContext = context;
     }
 
     @Override
@@ -36,6 +39,7 @@ public class ProductAdapter extends BaseQuickAdapter<ProductBean.ListBean.Produc
         mPrice.setText(productListBean.getPrice());
         mTvTitle.setText(productListBean.getTitle());
         mTvContent.setText(productListBean.getShort_title());
+        Glide.with(mContext).load(productListBean.getImg()).into(mImageView);
     }
 
 

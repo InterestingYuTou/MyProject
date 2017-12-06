@@ -3,9 +3,8 @@ package com.yutou;
 import android.app.Application;
 
 /**
- * Created by samsung on 2017/4/6.
+ * Created by admin on 2016/2/26.
  */
-
 public class MyApplication extends Application {
     private static MyApplication instance;
 
