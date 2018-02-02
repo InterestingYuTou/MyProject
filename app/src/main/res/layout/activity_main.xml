@@ -28,12 +28,14 @@
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="小视频相关" />
+        android:text="小视频相关"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btn_database"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/btn"
-        android:text="数据库测试" />
+        android:text="数据库测试"
+        android:visibility="gone" />
 </RelativeLayout>
